@@ -41,9 +41,8 @@ import bookpedia.composeapp.generated.resources.book_error_2
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 import ph.com.alexc.book.domain.Book
-import ph.com.alexc.core.presentation.LightBlue
 import ph.com.alexc.core.presentation.PulseAnimation
-import ph.com.alexc.core.presentation.SandYellow
+import ph.com.alexc.core.presentation.MutedTeal
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.round
 
@@ -57,7 +56,7 @@ fun BookListItem(
         shape = RoundedCornerShape(32.dp),
         modifier = modifier
             .clickable { onClick() },
-        color = LightBlue.copy(alpha = 0.2f)
+        color = MutedTeal.copy(alpha = 0.2f)
     ) {
         Row(
             modifier = Modifier
@@ -157,7 +156,7 @@ fun BookListItem(
                         Icon(
                             imageVector = Icons.Default.Star,
                             contentDescription = null,
-                            tint = SandYellow
+                            tint = MutedTeal
                         )
                     }
                 }

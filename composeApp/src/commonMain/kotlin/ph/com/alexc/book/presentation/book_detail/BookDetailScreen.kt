@@ -36,7 +36,7 @@ import ph.com.alexc.book.presentation.book_detail.components.BlurredImageBackgro
 import ph.com.alexc.book.presentation.book_detail.components.BookChip
 import ph.com.alexc.book.presentation.book_detail.components.ChipSize
 import ph.com.alexc.book.presentation.book_detail.components.TitledContent
-import ph.com.alexc.core.presentation.SandYellow
+import ph.com.alexc.core.presentation.MutedTeal
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
 
@@ -118,7 +118,7 @@ fun BookDetailScreen(
                                 Icon(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = null,
-                                    tint = SandYellow
+                                    tint = MutedTeal
                                 )
                             }
                         }

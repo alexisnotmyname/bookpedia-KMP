@@ -26,9 +26,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import bookpedia.composeapp.generated.resources.Res
 import bookpedia.composeapp.generated.resources.close_hint
 import bookpedia.composeapp.generated.resources.search_hint
-import ph.com.alexc.core.presentation.DarkBlue
+import ph.com.alexc.core.presentation.DeepBlue
 import ph.com.alexc.core.presentation.DesertWhite
-import ph.com.alexc.core.presentation.SandYellow
+import ph.com.alexc.core.presentation.MutedTeal
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -41,8 +41,8 @@ fun BookSearchBar(
 
     CompositionLocalProvider(
         LocalTextSelectionColors provides TextSelectionColors(
-            handleColor = SandYellow,
-            backgroundColor = SandYellow
+            handleColor = MutedTeal,
+            backgroundColor = MutedTeal
         )
     ) {
         OutlinedTextField(
@@ -51,8 +51,8 @@ fun BookSearchBar(
             singleLine = true,
             shape = RoundedCornerShape(100),
             colors = OutlinedTextFieldDefaults.colors(
-                cursorColor = DarkBlue,
-                focusedBorderColor = SandYellow
+                cursorColor = DeepBlue,
+                focusedBorderColor = MutedTeal
             ),
             placeholder = {
                 Text(text = stringResource(Res.string.search_hint))
