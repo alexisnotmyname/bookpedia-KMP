@@ -1,0 +1,29 @@
+CREATE TABLE BookFavoriteTable (
+    id TEXT PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    imageUrl TEXT NOT NULL,
+    languages TEXT NOT NULL,
+    authors TEXT NOT NULL,
+    firstPublishYear TEXT,
+    ratingsAverage REAL,
+    ratingsCount INTEGER,
+    numPagesMedian INTEGER,
+    numEditions INTEGER NOT NULL
+);
+
+insertBookToFavorites:
+INSERT OR REPLACE INTO BookFavoriteTable (id, title, description, imageUrl, languages, authors, firstPublishYear, ratingsAverage, ratingsCount, numPagesMedian, numEditions)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+-- Get all favorite books
+getFavoriteBooks:
+SELECT * FROM BookFavoriteTable;
+
+-- Get a single favorite book by ID
+getFavoriteBook:
+SELECT * FROM BookFavoriteTable WHERE id = ?;
+
+-- Delete a favorite book by ID
+deleteFavoriteBook:
+DELETE FROM BookFavoriteTable WHERE id = ?;

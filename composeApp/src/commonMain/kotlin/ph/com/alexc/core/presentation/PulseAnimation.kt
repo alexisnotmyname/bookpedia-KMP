@@ -13,7 +13,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
-import ph.com.alexc.core.presentation.SandYellow
 
 @Composable
 fun PulseAnimation(
@@ -38,7 +37,7 @@ fun PulseAnimation(
             }
             .border(
                 width = 5.dp,
-                color = SandYellow,
+                color = MutedTeal,
                 shape = CircleShape
             )
     )

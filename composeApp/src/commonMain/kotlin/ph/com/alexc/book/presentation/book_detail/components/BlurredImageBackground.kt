@@ -43,10 +43,10 @@ import bookpedia.composeapp.generated.resources.go_back
 import bookpedia.composeapp.generated.resources.mark_as_favorite
 import bookpedia.composeapp.generated.resources.remove_from_favorites
 import coil3.compose.rememberAsyncImagePainter
-import ph.com.alexc.core.presentation.DarkBlue
+import ph.com.alexc.core.presentation.DeepBlue
 import ph.com.alexc.core.presentation.DesertWhite
 import ph.com.alexc.core.presentation.PulseAnimation
-import ph.com.alexc.core.presentation.SandYellow
+import ph.com.alexc.core.presentation.MutedTeal
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -83,7 +83,7 @@ fun BlurredImageBackground(
                 modifier = Modifier
                     .weight(0.3f)
                     .fillMaxWidth()
-                    .background(DarkBlue)
+                    .background(DeepBlue)
             ) {
                 imageLoadResult?.getOrNull()?.let { painter ->
                     Image(
@@ -164,7 +164,7 @@ fun BlurredImageBackground(
                                         .background(
                                             brush = Brush.radialGradient(
                                                 colors = listOf(
-                                                    SandYellow, Color.Transparent
+                                                    MutedTeal, Color.Transparent
                                                 ),
                                                 radius = 70f
                                             )

@@ -40,9 +40,9 @@ import bookpedia.composeapp.generated.resources.search_results
 import ph.com.alexc.book.domain.Book
 import ph.com.alexc.book.presentation.book_list.components.BookList
 import ph.com.alexc.book.presentation.book_list.components.BookSearchBar
-import ph.com.alexc.core.presentation.DarkBlue
+import ph.com.alexc.core.presentation.DeepBlue
 import ph.com.alexc.core.presentation.DesertWhite
-import ph.com.alexc.core.presentation.SandYellow
+import ph.com.alexc.core.presentation.MutedTeal
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -92,7 +92,7 @@ fun BookListScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(DarkBlue)
+            .background(DeepBlue)
             .statusBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -130,12 +130,12 @@ fun BookListScreen(
                         .widthIn(max = 700.dp)
                         .fillMaxWidth(),
                     containerColor = DesertWhite,
-                    contentColor = SandYellow,
+                    contentColor = MutedTeal,
                     indicator = { tabPositions ->
                         TabRowDefaults.SecondaryIndicator(
                             modifier = Modifier
                                 .tabIndicatorOffset(tabPositions[state.selectedTabIndex]),
-                            color = SandYellow
+                            color = MutedTeal
                         )
                     }
                 ) {
@@ -145,7 +145,7 @@ fun BookListScreen(
                             onAction(BookListAction.OnTabSelected(0))
                         },
                         modifier = Modifier.weight(1f),
-                        selectedContentColor = SandYellow,
+                        selectedContentColor = MutedTeal,
                         unselectedContentColor = Color.Black.copy(alpha = 0.5f)
                     ) {
                         Text(
@@ -162,7 +162,7 @@ fun BookListScreen(
                             onAction(BookListAction.OnTabSelected(1))
                         },
                         modifier = Modifier.weight(1f),
-                        selectedContentColor = SandYellow,
+                        selectedContentColor = MutedTeal,
                         unselectedContentColor = Color.Black.copy(alpha = 0.5f)
                     ) {
                         Text(

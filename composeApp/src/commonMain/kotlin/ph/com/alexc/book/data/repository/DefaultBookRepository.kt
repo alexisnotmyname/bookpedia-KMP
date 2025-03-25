@@ -1,12 +1,10 @@
 package ph.com.alexc.book.data.repository
 
-import androidx.sqlite.SQLiteException
-import ph.com.alexc.book.data.database.FavoriteBookDao
 import ph.com.alexc.book.data.mappers.toBook
-import ph.com.alexc.book.data.mappers.toBookEntity
-import ph.com.alexc.book.data.network.RemoteBookDataSource
+import ph.com.alexc.book.data.source.RemoteBookDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import ph.com.alexc.book.data.source.impl.LocalDataSource
 import ph.com.alexc.book.domain.Book
 import ph.com.alexc.book.domain.BookRepository
 import ph.com.alexc.core.domain.DataError
@@ -16,7 +14,7 @@ import ph.com.alexc.core.domain.map
 
 class DefaultBookRepository(
     private val remoteBookDataSource: RemoteBookDataSource,
-    private val favoriteBookDao: FavoriteBookDao
+    private val localDataSource: LocalDataSource
 ): BookRepository {
     override suspend fun searchBooks(
         query: String,
@@ -30,7 +28,7 @@ class DefaultBookRepository(
     }
 
     override suspend fun getBookDescription(bookWorkId: String): Result<String?, DataError> {
-        val localResult = favoriteBookDao.getFavoriteBook(bookWorkId)
+        val localResult = localDataSource.getFavoriteBook(bookWorkId)
 
         return if(localResult == null) {
             remoteBookDataSource
@@ -43,16 +41,11 @@ class DefaultBookRepository(
     }
 
     override fun getFavoriteBooks(): Flow<List<Book>> {
-        return favoriteBookDao
-            .getFavoriteBooks()
-            .map { bookEntities ->
-                bookEntities.map { it.toBook() }
-            }
+        return localDataSource.getFavoriteBooks()
     }
 
     override fun isBookFavorite(id: String): Flow<Boolean> {
-        return favoriteBookDao
-            .getFavoriteBooks()
+        return localDataSource.getFavoriteBooks()
             .map { bookEntities ->
                 bookEntities.any { it.id == id }
             }
@@ -60,14 +53,14 @@ class DefaultBookRepository(
 
     override suspend fun markAsFavorite(book: Book): EmptyResult<DataError.Local> {
         return try {
-            favoriteBookDao.upsert(book.toBookEntity())
+            localDataSource.upsert(book)
             Result.Success(Unit)
-        } catch (e: SQLiteException) {
+        } catch (e: Exception) {
             Result.Error(DataError.Local.DISK_FULL)
         }
     }
 
     override suspend fun deleteFromFavorites(id: String) {
-        favoriteBookDao.deleteFavoriteBook(id)
+        localDataSource.deleteFavoriteBook(id)
     }
 }
