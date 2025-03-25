@@ -111,7 +111,6 @@ class BookListViewModel(
                 ) }
             }
             .onError { error ->
-                println("searchBooks: $error")
                 _state.update { it.copy(
                     searchResults = emptyList(),
                     isLoading = false,

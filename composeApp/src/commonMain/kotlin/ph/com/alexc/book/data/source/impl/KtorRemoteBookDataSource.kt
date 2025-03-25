@@ -1,10 +1,11 @@
-package ph.com.alexc.book.data.network
+package ph.com.alexc.book.data.source.impl
 
 import ph.com.alexc.book.data.dto.BookWorkDto
 import ph.com.alexc.book.data.dto.SearchResponseDto
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import ph.com.alexc.book.data.source.RemoteBookDataSource
 import ph.com.alexc.core.data.safeCall
 import ph.com.alexc.core.domain.DataError
 import ph.com.alexc.core.domain.Result

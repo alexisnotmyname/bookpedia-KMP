@@ -1,4 +1,4 @@
-package ph.com.alexc.book.data.network
+package ph.com.alexc.book.data.source
 
 import ph.com.alexc.book.data.dto.BookWorkDto
 import ph.com.alexc.book.data.dto.SearchResponseDto
